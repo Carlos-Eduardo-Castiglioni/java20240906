@@ -36,6 +36,9 @@ public class HelloController {
     @FXML
     private TextField txtTelefone;
 
+    @FXML
+    private TextField txtBusca;
+
     private Cliente cliente;
     private List<Cliente> listaClientes = new ArrayList<>();
 
@@ -91,4 +94,61 @@ public class HelloController {
         alerta.show();
         return;
     }
+    @FXML
+    protected void onBuscarCliente() {
+        //pode ser qualquer nome;
+        int idBusca;
+
+
+        try {
+            idBusca = Integer.parseInt(txtBusca.getText());
+        } catch (Exception err) {
+            Alert alertaErro = new Alert(Alert.AlertType.ERROR);
+            alertaErro.setTitle("Erro");
+            alertaErro.setHeaderText("Erro de Conversão");
+            alertaErro.setContentText("O campo não é um número válido");
+            alertaErro.show();
+        return;
+        }
+        for (int i = 0; i < listaClientes.size(); i++) {
+            if (listaClientes.get(i).getId() == idBusca) {
+                Cliente cliente1 = listaClientes.get(i);
+                populaCampos(cliente1);
+                }
+            else if (listaClientes.size() < Integer.parseInt(txtBusca.getText())){
+                Alert alertaErro = new Alert(Alert.AlertType.ERROR);
+                alertaErro.setTitle("Erro");
+                alertaErro.setHeaderText("Erro de Busca");
+                alertaErro.setContentText("O id não foi encontrado");
+                alertaErro.show();
+                return;
+
+            }
+        }
+
+
+
+
+    }
+
+    private void populaCampos(Cliente cli) {
+        txtNome.setText(cli.getNome());
+        txtEmail.setText(cli.getEmail());
+        txtTelefone.setText(cli.getTelefone());
+
+        if (cli.getSexo().equals("Feminino")) {
+            rbFeminino.setSelected(true);
+            rbMasculino.setSelected(false);
+        } else {
+            rbFeminino.setSelected(false);
+            rbMasculino.setSelected(true);
+        }
+
+        if (cli.getCasado()) {
+            chkCasado.setSelected(true);
+        } else {
+            chkCasado.setSelected(false);
+        }
+    }
+
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="484.0" prefWidth="494.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="br.com.etec.aula20240906.HelloController">
+<VBox alignment="TOP_CENTER" prefHeight="484.0" prefWidth="494.0" spacing="20.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.etec.aula20240906.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -81,6 +81,16 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <TextField fx:id="txtBusca" prefHeight="25.0" prefWidth="378.0" promptText="Pesquisar" />
+            <Button fx:id="bntBuscar" mnemonicParsing="false" onAction="#onBuscarCliente" text="Buscar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
       <TextArea fx:id="txtAreaDados" prefHeight="163.0" prefWidth="454.0" />
    </children>
 </VBox>
